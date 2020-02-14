@@ -1,0 +1,2 @@
+import tests.tileMapTest
+import tests.tileMapImageTest
