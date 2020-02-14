@@ -8,5 +8,5 @@ An adventure game written in python
 * PyTMX==3.21.7
 * six==1.14.0
 
-# Optional Requirements
+## Optional Requirements
 * Tiled 1.3.2
