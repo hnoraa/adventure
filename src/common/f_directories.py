@@ -1,3 +1,5 @@
+# f_directories.py
+# functions to get directory paths
 from os import path
 from settings import *
 

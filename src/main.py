@@ -1,3 +1,5 @@
+# main.py
+# entry point into the game
 from tests import *
 from game import Game
 

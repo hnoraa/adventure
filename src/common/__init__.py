@@ -1,3 +1,4 @@
+# common functionality/helpers
 import common.spriteSheet
 
 from . import f_pytmx

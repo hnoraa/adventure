@@ -1,5 +1,8 @@
+# spriteSheet.py
+# load images from a sprite sheet
 import pygame
 from . import f_pygame
+
 
 class SpriteSheet:
     def __init__(self, fileName, scaleX=0, scaleY=0):

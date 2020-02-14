@@ -1,3 +1,6 @@
+# tileMapImageTest.py
+# loads the tile map spritesheet
+# used to confirm loading
 import pygame
 import os
 import sys

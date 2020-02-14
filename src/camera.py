@@ -1,3 +1,5 @@
+# camera.py
+# used to move the player through the game
 import pygame
 
 from settings import *

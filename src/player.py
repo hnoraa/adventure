@@ -1,3 +1,5 @@
+# player.py
+# main player sprite
 import pygame
 from settings import *
 

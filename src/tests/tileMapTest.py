@@ -1,3 +1,5 @@
+# tileMapTest.py
+# used to test functionality of .tmx files
 import pygame
 import os
 import sys
@@ -5,6 +7,7 @@ import sys
 from common.f_pytmx import renderTiledSurface, loadTmxFromFile
 from common.f_pygame import mainGameEvents
 import settings
+
 
 class TileMapTest():
     def __init__(self):

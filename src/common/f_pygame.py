@@ -1,3 +1,5 @@
+# f_pygame.py
+# pygame functions
 import pygame
 from . import f_directories
 

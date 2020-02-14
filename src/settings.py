@@ -1,3 +1,5 @@
+# settings.py
+# game settings
 import pygame as pg
 vec = pg.math.Vector2
 
