@@ -53,6 +53,23 @@ class Game():
         self.allSprites = pygame.sprite.Group()
         self.player = Player(self, 10, 10)
 
+
+        """ 
+        Add obstacles for water and rock
+        for tile_object in self.map.tmxdata.objects:
+            obj_center = vec(tile_object.x + tile_object.width / 2,
+                             tile_object.y + tile_object.height / 2)
+            if tile_object.name == 'player':
+                self.player = Player(self, obj_center.x, obj_center.y)
+            if tile_object.name == 'zombie':
+                Mob(self, obj_center.x, obj_center.y)
+            if tile_object.name == 'wall':
+                Obstacle(self, tile_object.x, tile_object.y,
+                         tile_object.width, tile_object.height)
+            if tile_object.name in ['health', 'shotgun']:
+                Item(self, obj_center, tile_object.name) 
+        """
+
     def update(self):
         self.allSprites.update()
         self.camera.update(self.player)
