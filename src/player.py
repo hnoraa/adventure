@@ -16,16 +16,20 @@ class Player(pygame.sprite.Sprite):
         self.game = game
         self.spriteSheet = SpriteSheet(PLAYER_SPRITE)
 
-        self.imageLeft = self.spriteSheet.image_at((30, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY)
-        self.imageLeft = pygame.transform.scale(self.imageLeft, (32, 32))
-        self.imageRight = self.spriteSheet.image_at((45, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY)
-        self.imageRight = pygame.transform.scale(self.imageRight, (32, 32))
-        self.imageUp = self.spriteSheet.image_at((0, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY)
-        self.imageUp = pygame.transform.scale(self.imageUp, (32, 32))
-        self.imageDown = self.spriteSheet.image_at((15, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY)
-        self.imageDown = pygame.transform.scale(self.imageDown, (32, 32))
+        # directional images
+        self.images = [
+            self.spriteSheet.image_at((30, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY),
+            self.spriteSheet.image_at((45, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY),
+            self.spriteSheet.image_at((0, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY),
+            self.spriteSheet.image_at((15, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY)
+        ]
+        self.images[0] = pygame.transform.scale(self.images[0], (32, 32))
+        self.images[1] = pygame.transform.scale(self.images[1], (32, 32))
+        self.images[2] = pygame.transform.scale(self.images[2], (32, 32))
+        self.images[3] = pygame.transform.scale(self.images[3], (32, 32))
 
-        self.image = self.imageLeft
+        self.image = self.images[0]
+        self.direction = 'l'
 
         self.rect = self.image.get_rect()
         self.hitRect = PLAYER_HIT_RECT
@@ -33,31 +37,41 @@ class Player(pygame.sprite.Sprite):
         self.vel = vec(0, 0)
         self.pos = vec(x, y) * TILESIZE
 
-    def get_keys(self):
+    def getKeys(self):
         self.vel = vec(0, 0)
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:
-            self.image = self.imageLeft
+            self.direction = 'l'
             self.vel.x = -PLAYER_SPEED
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
-            self.image = self.imageRight
+            self.direction = 'r'
             self.vel.x = PLAYER_SPEED
         if keys[pygame.K_UP] or keys[pygame.K_w]:
-            self.image = self.imageUp
+            self.direction = 'u'
             self.vel.y = -PLAYER_SPEED
         if keys[pygame.K_DOWN] or keys[pygame.K_s]:
-            self.image = self.imageDown
+            self.direction = 'd'
             self.vel.y = PLAYER_SPEED
         if self.vel.x != 0 and self.vel.y != 0:
             self.vel *= 0.7071
 
+    def getImageFromDirection(self):
+        if self.direction == 'l':
+            self.image = self.images[0]
+        elif self.direction == 'r':
+            self.image = self.images[1]
+        elif self.direction == 'u':
+            self.image = self.images[2]
+        else:
+            self.image = self.images[3]
+
     def update(self):
-        self.get_keys()
+        self.getKeys()
 
         # depending on which key was pressed, load the appropriate image (up, down, left, right)
+        self.getImageFromDirection()
 
-        self.rect = self.image.get_rect()
         self.rect.center = self.pos
         self.pos += self.vel * self.game.dt
         self.hitRect.centerx = self.pos.x

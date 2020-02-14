@@ -3,7 +3,7 @@
 import pygame as pg
 vec = pg.math.Vector2
 
-# define some colors (R, G, B)
+# colors and transparency key
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 DARKGREY = (40, 40, 40)
@@ -17,14 +17,11 @@ MAGENTA = (255, 0, 255)
 COLOR_KEY = MAGENTA
 
 # game settings
-######WIDTH = 1024   # 16 * 64 or 32 * 32 or 64 * 16
-######HEIGHT = 768  # 16 * 48 or 32 * 24 or 64 * 12
 WIDTH = 600   # 16 * 64 or 32 * 32 or 64 * 16
 HEIGHT = 600  # 16 * 48 or 32 * 24 or 64 * 12
 FPS = 60
 CLOCK_TICK = 1000
-TITLE = "Tilemap Demo"
-BGCOLOR = BROWN
+TITLE = "TilemAdventure"
 
 # subdirectories
 IMG_DIR = '../images'
@@ -38,7 +35,7 @@ TILESIZE = 32
 GRIDWIDTH = WIDTH / TILESIZE
 GRIDHEIGHT = HEIGHT / TILESIZE
 
-# Player settings
+# player settings
 PLAYER_SPEED = 300
 PLAYER_SIZE = 16
 PLAYER_HIT_RECT = pg.Rect(0, 0, 35, 35)
