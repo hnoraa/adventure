@@ -4,9 +4,6 @@ from tests import *
 from game import Game
 
 if __name__ == '__main__':
-    ## tmx = tmxLoadData.LoadTmx()
-    ## tmx.format()
-
     ## t = tileMapImageTest.TileMapImageTest()
     ## t.run()
 

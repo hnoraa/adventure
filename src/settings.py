@@ -21,7 +21,7 @@ WIDTH = 600   # 16 * 64 or 32 * 32 or 64 * 16
 HEIGHT = 600  # 16 * 48 or 32 * 24 or 64 * 12
 FPS = 60
 CLOCK_TICK = 1000
-TITLE = "TilemAdventure"
+TITLE = "Tile Adventure"
 
 # subdirectories
 IMG_DIR = '../images'
