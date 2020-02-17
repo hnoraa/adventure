@@ -4,13 +4,13 @@ import pygame
 import os
 import sys
 
-from common.f_pytmx import renderTiledSurface, loadTmxFromFile
 from common.f_pygame import mainGameEvents
-from common.f_directories import mapsDir
 
 from settings import *
-from camera import *
-from player import *
+from camera import Camera
+from player import Player
+from envSprites import Obstacle
+from maps import TiledMap
 
 
 class Game():
@@ -40,42 +40,33 @@ class Game():
         self.quit()
 
     def load(self):
-        self.tmxData = loadTmxFromFile(mapsDir(MAP_FILE))
-        self.overworldDim = (self.tmxData.width * self.tmxData.tilewidth, self.tmxData.height * self.tmxData.tileheight)
-        self.map = renderTiledSurface(self.tmxData)
-        self.mapRect = self.map.get_rect()
-
-        self.camera = Camera(self.overworldDim[0], self.overworldDim[1])
-
-        self.currentWorldSurface = self.map
-        self.currentWorldSurfaceRect = self.currentWorldSurface.get_rect()
+        self.map = TiledMap()
+        self.mapImg = self.map.render()
+        self.map.rect = self.mapImg.get_rect()
 
         self.allSprites = pygame.sprite.Group()
-        self.player = Player(self, 10, 10)
+        self.water = pygame.sprite.Group()
+        self.stones = pygame.sprite.Group()
 
+        for tileObj in self.map.tmxdata.objects:
+            objCenter = vec(tileObj.x + tileObj.width / 2,
+                             tileObj.y + tileObj.height / 2)
+            if tileObj.name == 'player':
+                self.player = Player(self, objCenter.x, objCenter.y)
+            if tileObj.name == 'water':
+                Obstacle(self, tileObj.x, tileObj.y,
+                         tileObj.width, tileObj.height, self.water)
+            if tileObj.name == 'stone':
+                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.stones)
 
-        """ 
-        Add obstacles for water and rock
-        for tile_object in self.map.tmxdata.objects:
-            obj_center = vec(tile_object.x + tile_object.width / 2,
-                             tile_object.y + tile_object.height / 2)
-            if tile_object.name == 'player':
-                self.player = Player(self, obj_center.x, obj_center.y)
-            if tile_object.name == 'zombie':
-                Mob(self, obj_center.x, obj_center.y)
-            if tile_object.name == 'wall':
-                Obstacle(self, tile_object.x, tile_object.y,
-                         tile_object.width, tile_object.height)
-            if tile_object.name in ['health', 'shotgun']:
-                Item(self, obj_center, tile_object.name) 
-        """
+        self.camera = Camera(self.map.width, self.map.height)
 
     def update(self):
         self.allSprites.update()
         self.camera.update(self.player)
 
     def draw(self):
-        self.screen.blit(self.currentWorldSurface, self.camera.applyRect(self.currentWorldSurfaceRect))
+        self.screen.blit(self.mapImg, self.camera.apply(self.map))
 
         for sprite in self.allSprites:
             self.screen.blit(sprite.image, self.camera.apply(sprite))

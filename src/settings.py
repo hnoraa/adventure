@@ -28,7 +28,7 @@ IMG_DIR = '../images'
 MAP_DIR = '../maps'
 
 # files
-MAP_FILE = 'overworld_1.tmx'
+MAP_FILE = 'overworld_2.tmx'
 PLAYER_SPRITE = 'cat_sprite_1.png'
 
 TILESIZE = 32

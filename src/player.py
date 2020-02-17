@@ -6,7 +6,31 @@ from settings import *
 from common.f_directories import imagesDir
 from common.spriteSheet import SpriteSheet
 
+from maps import collideHitRect
+
 vec = pygame.math.Vector2
+
+def collide(sprite, group, direction):
+    if direction == 'x':
+        hits = pygame.sprite.spritecollide(sprite, group, False, collideHitRect)
+        if hits:
+            if hits[0].rect.centerx > sprite.hitRect.centerx:
+                sprite.pos.x = hits[0].rect.left - sprite.hitRect.width / 2
+            if hits[0].rect.centerx < sprite.hitRect.centerx:
+                sprite.pos.x = hits[0].rect.right + sprite.hitRect.width / 2
+
+            sprite.vel.x = 0
+            sprite.hitRect.centerx = sprite.pos.x
+    if direction == 'y':
+        hits = pygame.sprite.spritecollide(sprite, group, False, collideHitRect)
+        if hits:
+            if hits[0].rect.centery > sprite.hitRect.centery:
+                sprite.pos.y = hits[0].rect.top - sprite.hitRect.height / 2
+            if hits[0].rect.centery < sprite.hitRect.centery:
+                sprite.pos.y = hits[0].rect.bottom + sprite.hitRect.height / 2
+        
+        sprite.vel.y = 0
+        sprite.hitRect.centery = sprite.pos.y
 
 
 class Player(pygame.sprite.Sprite):
@@ -32,10 +56,13 @@ class Player(pygame.sprite.Sprite):
         self.direction = 'l'
 
         self.rect = self.image.get_rect()
+        self.rect.center = (x, y)
+
         self.hitRect = PLAYER_HIT_RECT
         self.hitRect.center = self.rect.center
+
         self.vel = vec(0, 0)
-        self.pos = vec(x, y) * TILESIZE
+        self.pos = vec(x, y)
 
     def getKeys(self):
         self.vel = vec(0, 0)
@@ -72,9 +99,13 @@ class Player(pygame.sprite.Sprite):
         # depending on which key was pressed, load the appropriate image (up, down, left, right)
         self.getImageFromDirection()
 
+        self.rect = self.image.get_rect()
         self.rect.center = self.pos
         self.pos += self.vel * self.game.dt
         self.hitRect.centerx = self.pos.x
+        collide(self, self.game.water, 'x')
+        collide(self, self.game.stones, 'x')
         self.hitRect.centery = self.pos.y
+        collide(self, self.game.water, 'y')
+        collide(self, self.game.stones, 'y')
         self.rect.center = self.hitRect.center
-        self.rect.clamp_ip(self.game.currentWorldSurfaceRect)

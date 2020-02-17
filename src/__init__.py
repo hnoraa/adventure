@@ -4,3 +4,5 @@ from . import game
 from . import settings
 from . import camera
 from . import player
+from . import envSprites
+from . import maps
