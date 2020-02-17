@@ -5,9 +5,6 @@ from common.f_directories import mapsDir
 
 from settings import *
 
-def collideHitRect(one, two):
-    return one.hitRect.colliderect(two.rect)
-
 
 class TiledMap:
     def __init__(self):

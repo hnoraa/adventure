@@ -25,3 +25,9 @@ def loadScaledImage(fileName, scaleX, scaleY, isAlpha=True):
 
     image = pygame.transform.scale(image, (scaleX, scaleY))
     return image
+
+def collideHitRect(one, two):
+    return one.hitRect.colliderect(two.rect)
+
+def getHits(sprite, group):
+    return pygame.sprite.spritecollide(sprite, group, False, collideHitRect)
