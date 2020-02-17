@@ -16,7 +16,7 @@ An adventure game written in python
 ## Todo
 - [x] scale sprite sheet image to 32 x 32 instead of 16 x 16
 - [x] change player width/height to 32
-- [ ] fix color key issues on player sprite sheet (edges blurred when resized)
+- [x] fix color key issues on player sprite sheet (edges blurred when resized)
 - [ ] make main overworld (largest map)
 - [ ] come up with dungeons
 - [ ] scene management (start screen, game screen, pause screen, inventory)

@@ -22,12 +22,13 @@ class SpriteSheet:
         # loads from x, y, x+offset, y+offset
         rect = pygame.Rect(rectangle)
         image = pygame.Surface(rect.size).convert()
-        image.blit(self.sheet, (0, 0), rect)
 
         if colorKey is not None:
             if colorKey is -1:
                 colorKey = image.get_at((0, 0))
             image.set_colorkey(colorKey, pygame.RLEACCEL)
+
+        image.blit(self.sheet, (0, 0), rect)
 
         return image
 
