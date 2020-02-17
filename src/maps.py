@@ -8,10 +8,7 @@ from settings import *
 
 class TiledMap:
     def __init__(self):
-        tm = loadTmxFromFile(mapsDir(MAP_FILE))
-        self.width = tm.width * tm.tilewidth
-        self.height = tm.height * tm.tileheight
-        self.tmxdata = tm
+        self.tmxdata = loadTmxFromFile(mapsDir(MAP_FILE))
 
     def render(self):
         return renderTiledSurface(self.tmxdata)

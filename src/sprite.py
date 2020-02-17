@@ -26,8 +26,8 @@ def collide(sprite, group, direction):
             if hits[0].rect.centery < sprite.hitRect.centery:
                 sprite.pos.y = hits[0].rect.bottom + sprite.hitRect.height / 2
         
-        sprite.vel.y = 0
-        sprite.hitRect.centery = sprite.pos.y
+            sprite.vel.y = 0
+            sprite.hitRect.centery = sprite.pos.y
 
 
 class Sprite(pygame.sprite.Sprite):
@@ -51,4 +51,3 @@ class Sprite(pygame.sprite.Sprite):
 
     def update(self):
         pass
-    
