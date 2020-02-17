@@ -28,7 +28,7 @@ IMG_DIR = '../images'
 MAP_DIR = '../maps'
 
 # files
-MAP_FILE = 'overworld_2.tmx'
+MAP_FILE = 'mainWorld.tmx'
 PLAYER_SPRITE = 'catSpriteSheet1.png'
 
 # player settings
