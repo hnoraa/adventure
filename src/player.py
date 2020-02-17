@@ -19,16 +19,12 @@ class Player(Sprite):
         # directional images
         # TODO: this needs to be updated, need 32 x 32 character sprite so we don't have to call transform
         self.images = [
-            self.spriteSheet.image_at((30, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY),
-            self.spriteSheet.image_at((45, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY),
-            self.spriteSheet.image_at((0, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY),
-            self.spriteSheet.image_at((15, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY)
+            self.spriteSheet.image_at((0, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY),     # up
+            self.spriteSheet.image_at((32, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY),    # down
+            self.spriteSheet.image_at((64, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY),    # left
+            self.spriteSheet.image_at((96, 0, PLAYER_SIZE, PLAYER_SIZE), COLOR_KEY)     # right
         ]
-        # self.images[0] = pygame.transform.scale(self.images[0], (32, 32))
-        # self.images[1] = pygame.transform.scale(self.images[1], (32, 32))
-        # self.images[2] = pygame.transform.scale(self.images[2], (32, 32))
-        # self.images[3] = pygame.transform.scale(self.images[3], (32, 32))
-
+        
         self.image = self.images[0]
         super().__init__(game, PLAYER_HIT_RECT, self.image, x, y)
 
@@ -53,17 +49,17 @@ class Player(Sprite):
             self.vel.y = PLAYER_SPEED
 
         if self.vel.x != 0 and self.vel.y != 0:
-            self.vel *= 0.7071
+            self.vel *= VEL_FACTOR
 
     def getImageFromDirection(self):
         if self.direction == 'l':
-            self.image = self.images[0]
-        elif self.direction == 'r':
-            self.image = self.images[1]
-        elif self.direction == 'u':
             self.image = self.images[2]
-        else:
+        elif self.direction == 'r':
             self.image = self.images[3]
+        elif self.direction == 'u':
+            self.image = self.images[0]
+        else:
+            self.image = self.images[1]
 
     def update(self):
         self.getKeys()

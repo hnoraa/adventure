@@ -17,8 +17,8 @@ MAGENTA = (255, 0, 255)
 COLOR_KEY = MAGENTA
 
 # game settings
-WIDTH = 600   # 16 * 64 or 32 * 32 or 64 * 16
-HEIGHT = 600  # 16 * 48 or 32 * 24 or 64 * 12
+WIDTH = 800
+HEIGHT = 600
 FPS = 60
 CLOCK_TICK = 1000
 TITLE = "Tile Adventure"
@@ -29,13 +29,10 @@ MAP_DIR = '../maps'
 
 # files
 MAP_FILE = 'overworld_2.tmx'
-PLAYER_SPRITE = 'cat_sprite_1.png'
-
-TILESIZE = 32
-GRIDWIDTH = WIDTH / TILESIZE
-GRIDHEIGHT = HEIGHT / TILESIZE
+PLAYER_SPRITE = 'catSpriteSheet1.png'
 
 # player settings
 PLAYER_SPEED = 300
-PLAYER_SIZE = 16
+PLAYER_SIZE = 32
 PLAYER_HIT_RECT = pg.Rect(0, 0, 35, 35)
+VEL_FACTOR = 0.7071

@@ -51,11 +51,14 @@ class Game():
         for tileObj in self.map.tmxdata.objects:
             objCenter = vec(tileObj.x + tileObj.width / 2,
                              tileObj.y + tileObj.height / 2)
+
             if tileObj.name == 'player':
                 self.player = Player(self, objCenter.x, objCenter.y)
+
             if tileObj.name == 'water':
                 Obstacle(self, tileObj.x, tileObj.y,
                          tileObj.width, tileObj.height, self.water)
+                         
             if tileObj.name == 'stone':
                 Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.stones)
 
