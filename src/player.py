@@ -4,7 +4,6 @@ import pygame
 from settings import *
 
 from common.f_directories import imagesDir
-
 from common.spriteSheet import SpriteSheet
 
 from sprite import Sprite, collide
@@ -40,15 +39,19 @@ class Player(Sprite):
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:
             self.direction = 'l'
             self.vel.x = -PLAYER_SPEED
+
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
             self.direction = 'r'
             self.vel.x = PLAYER_SPEED
+
         if keys[pygame.K_UP] or keys[pygame.K_w]:
             self.direction = 'u'
             self.vel.y = -PLAYER_SPEED
+
         if keys[pygame.K_DOWN] or keys[pygame.K_s]:
             self.direction = 'd'
             self.vel.y = PLAYER_SPEED
+
         if self.vel.x != 0 and self.vel.y != 0:
             self.vel *= 0.7071
 

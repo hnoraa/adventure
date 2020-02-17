@@ -26,4 +26,5 @@ class Camera:
         y = min(0, y)   # top
         x = max(-(self.width - WIDTH), x)   # right
         y = max(-(self.height - HEIGHT), y) # bottom
+        
         self.camera = pygame.Rect(x, y, self.width, self.height)

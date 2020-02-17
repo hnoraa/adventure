@@ -1,3 +1,5 @@
+# sprite.py
+# parent sprite class to inherit from
 import pygame
 
 from common.f_pygame import getHits
@@ -15,6 +17,7 @@ def collide(sprite, group, direction):
 
             sprite.vel.x = 0
             sprite.hitRect.centerx = sprite.pos.x
+
     if direction == 'y':
         hits = getHits(sprite, group)
         if hits:
@@ -48,3 +51,4 @@ class Sprite(pygame.sprite.Sprite):
 
     def update(self):
         pass
+    

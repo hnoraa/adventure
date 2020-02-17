@@ -1,6 +1,7 @@
 # spriteSheet.py
 # load images from a sprite sheet
 import pygame
+
 from . import f_pygame
 
 
@@ -38,4 +39,5 @@ class SpriteSheet:
         # load a whole strip of images and return them as a list
         tuples = [(rectangle[0]+rectangle[2]*x, rectangle[1], rectangle[2], rectangle(3))
             for x in range(imageCount)]
+            
         return self.images_at(tuples, colorKey)
