@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="96" height="96" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="274">
+<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="96" height="96" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="282">
  <tileset firstgid="1" name="masterTileSet_1" tilewidth="32" tileheight="32" tilecount="120" columns="10">
   <image source="../images/masterTileSet_1.png" trans="ff00ff" width="320" height="384"/>
  </tileset>
@@ -103,7 +103,7 @@
 19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,101,100,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,104,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19
 </data>
  </layer>
- <objectgroup id="2" name="worldBounds" visible="0">
+ <objectgroup id="2" name="worldBounds">
   <object id="24" name="water" x="280" y="69.3333" width="117.333" height="22.6667"/>
   <object id="25" name="water" x="389.333" y="93.3333" width="118.667" height="26.6667"/>
   <object id="26" name="water" x="485.333" y="121.333" width="61.3333" height="32"/>
@@ -335,14 +335,22 @@
  </objectgroup>
  <objectgroup id="3" name="characters">
   <object id="23" name="player" x="624" y="993.333" width="32" height="32"/>
+  <object id="274" name="house" x="322.667" y="354.667" width="58.6667" height="60"/>
+  <object id="275" name="house" x="1730.67" y="833.333" width="57.3333" height="57.3333"/>
+  <object id="276" name="house" x="1857.33" y="897.333" width="60" height="58.6667"/>
+  <object id="277" name="house" x="1954.67" y="993.333" width="57.3333" height="60"/>
+  <object id="278" name="house" x="2048" y="2497.33" width="60" height="57.3333"/>
+  <object id="279" name="house" x="1858.67" y="2434.67" width="60" height="57.3333"/>
+  <object id="280" name="house" x="1661.33" y="2337.33" width="64" height="61.3333"/>
+  <object id="281" name="house" x="1793.33" y="2593.33" width="60" height="60"/>
  </objectgroup>
- <objectgroup id="4" name="entrances">
-  <object id="267" name="entrance" x="578.667" y="1634.67" width="28" height="26.6667"/>
-  <object id="268" name="entrance" x="1441.33" y="2532" width="30.6667" height="26.6667"/>
-  <object id="269" name="entrance" x="644" y="2561.33" width="25.3333" height="25.3333"/>
-  <object id="270" name="entrance" x="577.333" y="2594.67" width="26.6667" height="25.3333"/>
-  <object id="271" name="entrance" x="1377.33" y="2625.33" width="26.6667" height="26.6667"/>
-  <object id="272" name="entrance" x="385.333" y="2693.33" width="28" height="21.3333"/>
-  <object id="273" name="entrance" x="2209.33" y="1154.67" width="32" height="25.3333"/>
+ <objectgroup id="4" name="levelEntrances">
+  <object id="267" name="entrance_l1" x="578.667" y="1634.67" width="28" height="26.6667"/>
+  <object id="268" name="entrance_t1_a" x="1441.33" y="2532" width="30.6667" height="26.6667"/>
+  <object id="269" name="entrance_t2_a" x="644" y="2561.33" width="25.3333" height="25.3333"/>
+  <object id="270" name="entrance_t2_a" x="577.333" y="2594.67" width="26.6667" height="25.3333"/>
+  <object id="271" name="entrance_t1_b" x="1377.33" y="2625.33" width="26.6667" height="26.6667"/>
+  <object id="272" name="entrance_l3" x="385.333" y="2693.33" width="28" height="21.3333"/>
+  <object id="273" name="entrance_l2" x="2209.33" y="1154.67" width="32" height="25.3333"/>
  </objectgroup>
 </map>

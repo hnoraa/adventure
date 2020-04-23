@@ -47,6 +47,9 @@ class Game():
         self.allSprites = pygame.sprite.Group()
         self.water = pygame.sprite.Group()
         self.stones = pygame.sprite.Group()
+        self.houses = pygame.sprite.Group()
+        self.levelEntrances = pygame.sprite.Group()
+        self.tunnelEntrances = pygame.sprite.Group()
 
         for tileObj in self.map.tmxdata.objects:
             objCenter = vec(tileObj.x + tileObj.width / 2,
@@ -57,10 +60,19 @@ class Game():
 
             if tileObj.name == 'water':
                 Obstacle(self, tileObj.x, tileObj.y,
-                         tileObj.width, tileObj.height, self.water)
+                         tileObj.width, tileObj.height, self.water, tileObj.name)
                          
             if tileObj.name == 'stone':
-                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.stones)
+                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.stones, tileObj.name)
+
+            if tileObj.name == 'house':
+                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.houses, tileObj.name)
+
+            if '_l' in tileObj.name:
+                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.levelEntrances, tileObj.name)
+
+            if '_t' in tileObj.name:
+                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.tunnelEntrances, tileObj.name)
 
         self.camera = Camera(self.map.width, self.map.height)
 

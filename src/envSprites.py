@@ -7,7 +7,7 @@ from sprite import Sprite, collide
 
 
 class Obstacle(pygame.sprite.Sprite):
-    def __init__(self, game, x, y, w, h, spriteGroup):
+    def __init__(self, game, x, y, w, h, spriteGroup, name):
         self.groups = spriteGroup
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game = game
@@ -17,3 +17,4 @@ class Obstacle(pygame.sprite.Sprite):
         self.y = y
         self.rect.x = x
         self.rect.y = y
+        self.name = name

@@ -6,7 +6,7 @@ from settings import *
 from common.f_directories import imagesDir
 from common.spriteSheet import SpriteSheet
 
-from sprite import Sprite, collide
+from sprite import Sprite, collide, enter
 
 vec = pygame.math.Vector2
 
@@ -73,11 +73,27 @@ class Player(Sprite):
         self.pos += self.vel * self.game.dt
 
         self.hitRect.centerx = self.pos.x
-        collide(self, self.game.water, 'x')
+        # if not aquatic, dont allow passage on water
+        if not self.aquatic: collide(self, self.game.water, 'x')
+
+        # entrances to levels/tunnels
+        enter(self, self.game.levelEntrances, 'x')
+        enter(self, self.game.tunnelEntrances, 'x')
+
+        # world bounds collisions
         collide(self, self.game.stones, 'x')
+        collide(self, self.game.houses, 'x')
 
         self.hitRect.centery = self.pos.y
-        collide(self, self.game.water, 'y')
+        # if not aquatic, dont allow passage on water
+        if not self.aquatic: collide(self, self.game.water, 'y')
+
+        # entrances to levels/tunnels
+        enter(self, self.game.levelEntrances, 'y')
+        enter(self, self.game.tunnelEntrances, 'y')
+
+        # world bounds collisions
         collide(self, self.game.stones, 'y')
+        collide(self, self.game.houses, 'y')
 
         self.rect.center = self.hitRect.center
