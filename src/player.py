@@ -6,7 +6,7 @@ from settings import *
 from common.f_directories import imagesDir
 from common.spriteSheet import SpriteSheet
 
-from sprite import Sprite, collide, enter
+from sprite import Sprite, collide, enter, exitToOverworld
 
 vec = pygame.math.Vector2
 
@@ -27,6 +27,10 @@ class Player(Sprite):
         
         self.image = self.images[0]
         super().__init__(game, PLAYER_HIT_RECT, self.image, x, y)
+        self.aquatic = True
+
+    def setNewBounds(self, x, y):
+        super().setNewBounds(x, y)
 
     def getKeys(self):
         self.vel = vec(0, 0)
@@ -73,27 +77,28 @@ class Player(Sprite):
         self.pos += self.vel * self.game.dt
 
         self.hitRect.centerx = self.pos.x
+        self.hitRect.centery = self.pos.y
+
         # if not aquatic, dont allow passage on water
-        if not self.aquatic: collide(self, self.game.water, 'x')
+        if not self.aquatic: 
+            collide(self, self.game.water, 'x')
+            collide(self, self.game.water, 'y')
 
         # entrances to levels/tunnels
-        enter(self, self.game.levelEntrances, 'x')
-        enter(self, self.game.tunnelEntrances, 'x')
+        enter(self, self.game.levelEntrances)
+        enter(self, self.game.tunnelEntrances)
+
+        # exits to the overworld
+        exitToOverworld(self, self.game.exits)
 
         # world bounds collisions
         collide(self, self.game.stones, 'x')
+        collide(self, self.game.walls, 'x')
         collide(self, self.game.houses, 'x')
-
-        self.hitRect.centery = self.pos.y
-        # if not aquatic, dont allow passage on water
-        if not self.aquatic: collide(self, self.game.water, 'y')
-
-        # entrances to levels/tunnels
-        enter(self, self.game.levelEntrances, 'y')
-        enter(self, self.game.tunnelEntrances, 'y')
 
         # world bounds collisions
         collide(self, self.game.stones, 'y')
+        collide(self, self.game.walls, 'y')
         collide(self, self.game.houses, 'y')
 
         self.rect.center = self.hitRect.center

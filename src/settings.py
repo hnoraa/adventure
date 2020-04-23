@@ -29,6 +29,12 @@ MAP_DIR = '../maps'
 
 # files
 MAP_FILE = 'mainWorld.tmx'
+LEVEL1_FILE = 'l1.tmx'
+LEVEL2_FILE = 'l2.tmx'
+LEVEL3_FILE = 'l3.tmx'
+LEVEL4_FILE = 'l4.tmx'
+TUNNEL1_FILE = 't1.tmx'
+TUNNEL2_FILE = 't2.tmx'
 PLAYER_SPRITE = 'catSpriteSheet1.png'
 
 # player settings

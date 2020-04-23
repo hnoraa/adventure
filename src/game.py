@@ -25,9 +25,14 @@ class Game():
         self.clock = pygame.time.Clock()
 
         self.running = True
+        self.currentLocation = 'o'
+        self.allSprites = pygame.sprite.Group()
+        
+        self.player = Player(self, 0, 0)
 
     def run(self):
-        self.load()
+        self.load(self.currentLocation)
+
         while self.running:
             self.dt = self.clock.tick(FPS) / CLOCK_TICK
 
@@ -39,40 +44,57 @@ class Game():
 
         self.quit()
 
-    def load(self):
-        self.map = TiledMap()
+    def load(self, entranceName):
+        # loads 
+        self.currentLocation = entranceName
+
+        self.map = TiledMap(self.currentLocation)
         self.mapImg = self.map.render()
         self.map.rect = self.mapImg.get_rect()
-
-        self.allSprites = pygame.sprite.Group()
+        
+        # sprite groups
         self.water = pygame.sprite.Group()
         self.stones = pygame.sprite.Group()
         self.houses = pygame.sprite.Group()
         self.levelEntrances = pygame.sprite.Group()
         self.tunnelEntrances = pygame.sprite.Group()
+        self.walls = pygame.sprite.Group()
+        self.doors = pygame.sprite.Group()
+        self.exits = pygame.sprite.Group()
 
         for tileObj in self.map.tmxdata.objects:
             objCenter = vec(tileObj.x + tileObj.width / 2,
                              tileObj.y + tileObj.height / 2)
 
-            if tileObj.name == 'player':
-                self.player = Player(self, objCenter.x, objCenter.y)
+            if tileObj.name == 'player_'+self.currentLocation:
+                self.player.setNewBounds(objCenter.x, objCenter.y)
 
+            # overworld only
+            if self.currentLocation == 'o':
+                if '_l' in tileObj.name:
+                    Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.levelEntrances, tileObj.name)
+
+                if '_t' in tileObj.name:
+                    Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.tunnelEntrances, tileObj.name)
+
+            # obstacles
             if tileObj.name == 'water':
-                Obstacle(self, tileObj.x, tileObj.y,
-                         tileObj.width, tileObj.height, self.water, tileObj.name)
-                         
+                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.water, tileObj.name)
+
             if tileObj.name == 'stone':
                 Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.stones, tileObj.name)
 
             if tileObj.name == 'house':
                 Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.houses, tileObj.name)
 
-            if '_l' in tileObj.name:
-                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.levelEntrances, tileObj.name)
+            if tileObj.name == 'wall':
+                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.walls, tileObj.name)
 
-            if '_t' in tileObj.name:
-                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.tunnelEntrances, tileObj.name)
+            if tileObj.name == 'door':
+                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.doors, tileObj.name)
+
+            if tileObj.name == 'exit':
+                Obstacle(self, tileObj.x, tileObj.y, tileObj.width, tileObj.height, self.exits, tileObj.name)
 
         self.camera = Camera(self.map.width, self.map.height)
 

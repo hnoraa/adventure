@@ -7,10 +7,24 @@ from settings import *
 
 
 class TiledMap:
-    def __init__(self):
-        self.tmxdata = loadTmxFromFile(mapsDir(MAP_FILE))
-        self.width = self.tmxdata.width * self.tmxdata.tilewidth
-        self.height = self.tmxdata.height * self.tmxdata.tileheight
+    def __init__(self, location):
+        self.location = location
+
+        if self.location == 'o':
+            self.tmxdata = loadTmxFromFile(mapsDir(MAP_FILE))
+            self.width = self.tmxdata.width * self.tmxdata.tilewidth
+            self.height = self.tmxdata.height * self.tmxdata.tileheight
+        else:
+            mapName = location[:2] + '.tmx'
+            
+            if location[0] == 'l' or location[0] == 't':
+                # level
+                self.tmxdata = loadTmxFromFile(mapsDir(mapName))
+                self.width = self.tmxdata.width * self.tmxdata.tilewidth
+                self.height = self.tmxdata.height * self.tmxdata.tileheight
+            else:
+                # other (house, shop, etc...)
+                pass
 
     def render(self):
         return renderTiledSurface(self.tmxdata)

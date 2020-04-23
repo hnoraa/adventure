@@ -33,31 +33,22 @@ def collide(sprite, group, direction):
 
 
 # used to enter a level or tunnel
-def enter(sprite, group, direction):
-    if direction == 'x':
-        hits = getHits(sprite, group)
-        if hits:
-            # get the entrance name (corresponds to level/tunnel)
+def enter(sprite, group):
+    hits = getHits(sprite, group)
+    if hits:
+        # get the entrance name (corresponds to level/tunnel)
+        if '_t' in hits[0].name:
+            entranceName = hits[0].name.split('_')[1] + '_' + hits[0].name.split('_')[2]
+        else:    
             entranceName = hits[0].name.split('_')[1]
-            print(entranceName)
+            
+        sprite.game.load(entranceName)
 
-            if 'l' in entranceName:
-                print('level')
-            else:
-                print('tunnel')
-
-    if direction == 'y':
-        hits = getHits(sprite, group)
-        if hits:
-            # get the entrance name (corresponds to level/tunnel)
-            entranceName = hits[0].name.split('_')[1]
-            print(entranceName)
-
-            if 'l' in entranceName:
-                print('level')
-            else:
-                print('tunnel')
-
+# used to exit to the overworld
+def exitToOverworld(sprite, group):
+    hits = getHits(sprite, group)
+    if hits:
+        sprite.game.load('o')
 
 # generic sprite class
 class Sprite(pygame.sprite.Sprite):
@@ -67,18 +58,20 @@ class Sprite(pygame.sprite.Sprite):
         self.game = game
 
         self.image = image
+        self.hitRect = hitRect
 
+        self.setNewBounds(x, y)
+
+        self.direction = 'l'
+
+    def setNewBounds(self, x, y):
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
-
-        self.hitRect = hitRect
+        
         self.hitRect.center = self.rect.center
         
         self.vel = vec(0, 0)
         self.pos = vec(x, y)
-
-        self.direction = 'l'
-        self.aquatic = True
 
     def update(self):
         pass
