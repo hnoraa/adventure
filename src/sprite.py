@@ -41,14 +41,16 @@ def enter(sprite, group):
             entranceName = hits[0].name.split('_')[1] + '_' + hits[0].name.split('_')[2]
         else:    
             entranceName = hits[0].name.split('_')[1]
-            
-        sprite.game.load(entranceName)
+
+        sprite.game.loadSubLevel(entranceName)
+
 
 # used to exit to the overworld
 def exitToOverworld(sprite, group):
     hits = getHits(sprite, group)
     if hits:
-        sprite.game.load('o')
+        sprite.game.loadOverworld(sprite.game.currentLocation)
+
 
 # generic sprite class
 class Sprite(pygame.sprite.Sprite):
@@ -60,10 +62,12 @@ class Sprite(pygame.sprite.Sprite):
         self.image = image
         self.hitRect = hitRect
 
+        # set the initial coordinates
         self.setNewBounds(x, y)
 
         self.direction = 'l'
 
+    # set the players bounds upon entrance/exit into another map
     def setNewBounds(self, x, y):
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)

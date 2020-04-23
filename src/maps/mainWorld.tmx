@@ -343,7 +343,7 @@
   <object id="279" name="house" x="1858.67" y="2434.67" width="60" height="57.3333"/>
   <object id="280" name="house" x="1661.33" y="2337.33" width="64" height="61.3333"/>
   <object id="281" name="house" x="1793.33" y="2593.33" width="60" height="60"/>
-  <object id="282" name="player_l1" x="642.667" y="1634.67" width="26.6667" height="26.6667"/>
+  <object id="282" name="player_l1" x="658.667" y="1618.67" width="26.6667" height="26.6667"/>
   <object id="283" name="player_l3" x="321.333" y="2689.33" width="28" height="26.6667"/>
   <object id="284" name="player_l2" x="2272" y="1153.33" width="30.6667" height="28"/>
   <object id="285" name="player_t1_a" x="1506.67" y="2528" width="26.6667" height="29.3333"/>

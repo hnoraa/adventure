@@ -3,18 +3,23 @@
 # these are sprites that player collides with that may not have a sprite image
 import pygame
 
-from sprite import Sprite, collide
+from sprite import Sprite
 
 
 class Obstacle(pygame.sprite.Sprite):
     def __init__(self, game, x, y, w, h, spriteGroup, name):
         self.groups = spriteGroup
+        
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game = game
+
         self.rect = pygame.Rect(x, y, w, h)
         self.hitRect = self.rect
+
         self.x = x
         self.y = y
+
         self.rect.x = x
         self.rect.y = y
+
         self.name = name

@@ -124,7 +124,7 @@
   <object id="26" name="wall" x="592" y="988" width="76" height="1312"/>
  </objectgroup>
  <objectgroup id="3" name="player">
-  <object id="4" name="player_l1" x="1506" y="92" width="32" height="32"/>
+  <object id="4" name="player" x="1506" y="92" width="32" height="32"/>
   <object id="5" x="1330" y="-282"/>
  </objectgroup>
  <objectgroup id="4" name="doors">
