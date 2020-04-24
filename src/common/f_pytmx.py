@@ -3,6 +3,8 @@
 import pytmx
 import pygame
 
+from . import f_pygame
+
 def loadTmxFromFile(fileName):
     return pytmx.load_pygame(fileName, pixelalpha=True)
 
@@ -17,3 +19,6 @@ def renderTiledSurface(tmxData):
                     surface.blit(tile, (x * tmxData.tilewidth, y * tmxData.tileheight))
 
     return surface
+
+def getObjCenter(tileObj):
+    return f_pygame.vec(tileObj.x + tileObj.width / 2, tileObj.y + tileObj.height / 2)

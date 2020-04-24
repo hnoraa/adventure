@@ -4,11 +4,10 @@ import pygame
 from settings import *
 
 from common.f_directories import imagesDir
+from common.f_pygame import vec
 from common.spriteSheet import SpriteSheet
 
 from sprite import Sprite, collide, enter, exitToOverworld
-
-vec = pygame.math.Vector2
 
 
 # class Player(pygame.sprite.Sprite):

@@ -2,9 +2,7 @@
 # parent sprite class to inherit from
 import pygame
 
-from common.f_pygame import getHits
-
-vec = pygame.math.Vector2
+from common.f_pygame import getHits, vec
 
 
 # object collision

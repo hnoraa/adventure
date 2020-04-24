@@ -1,7 +1,5 @@
 # settings.py
 # game settings
-import pygame as pg
-vec = pg.math.Vector2
 
 # colors and transparency key
 WHITE = (255, 255, 255)

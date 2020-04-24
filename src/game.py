@@ -5,6 +5,7 @@ import os
 import sys
 
 from common.f_pygame import mainGameEvents
+from common.f_pytmx import getObjCenter
 
 from settings import *
 from camera import Camera
@@ -29,7 +30,9 @@ class Game():
         self.allSprites = pygame.sprite.Group()
         
         self.player = Player(self, 0, 0)
+        self.setupSpriteGroups()
 
+    def setupSpriteGroups(self):
         # sprite groups
         self.water = pygame.sprite.Group()
         self.stones = pygame.sprite.Group()
@@ -63,8 +66,7 @@ class Game():
         self.map.rect = self.mapImg.get_rect()
 
         for tileObj in self.map.tmxdata.objects:
-            objCenter = vec(tileObj.x + tileObj.width / 2,
-                             tileObj.y + tileObj.height / 2)
+            objCenter = getObjCenter(tileObj)
 
             # put the player in the correct place
             if tileObj.name == 'player_' + playerPosition:
@@ -98,8 +100,7 @@ class Game():
         self.map.rect = self.mapImg.get_rect()
 
         for tileObj in self.map.tmxdata.objects:
-            objCenter = vec(tileObj.x + tileObj.width / 2,
-                             tileObj.y + tileObj.height / 2)
+            objCenter = objCenter = getObjCenter(tileObj)
 
             # player position
             if tileObj.name == 'player':

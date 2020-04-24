@@ -4,6 +4,8 @@ import pygame
 
 from . import f_directories
 
+vec = pygame.math.Vector2
+
 def mainGameEvents(running):
     # main game key events
     for event in pygame.event.get():
@@ -37,3 +39,4 @@ def collideHitRect(one, two):
 def getHits(sprite, group):
     # detect sprite hits for a given group
     return pygame.sprite.spritecollide(sprite, group, False, collideHitRect)
+    
