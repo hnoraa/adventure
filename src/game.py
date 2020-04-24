@@ -58,7 +58,7 @@ class Game():
         self.quit()
 
     def loadOverworld(self, playerPosition):
-        print(playerPosition)
+        self.setupSpriteGroups()
         self.currentLocation = 'o'
 
         self.map = TiledMap(self.currentLocation)
@@ -70,6 +70,7 @@ class Game():
 
             # put the player in the correct place
             if tileObj.name == 'player_' + playerPosition:
+                print(tileObj.name)
                 self.player.setNewBounds(objCenter.x, objCenter.y)
 
             # load entrances
@@ -93,6 +94,7 @@ class Game():
         self.camera = Camera(self.map.width, self.map.height)
 
     def loadSubLevel(self, entranceName):
+        self.setupSpriteGroups()
         self.currentLocation = entranceName
 
         self.map = TiledMap(self.currentLocation)
