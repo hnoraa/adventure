@@ -1,0 +1,10 @@
+base layer (water)
+next layer (dirt/sand)
+next layer (grass)
+
+mountain layer
+grass/shrub layer
+city/town layer
+forest layer
+
+sprite layer
