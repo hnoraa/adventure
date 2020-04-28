@@ -28,7 +28,7 @@ IMG_DIR = '../images'
 MAP_DIR = '../maps'
 
 # files
-MAP_FILE = 'mainWorld.tmx'
+MAP_FILE = 'overworld.tmx'
 LEVEL1_FILE = 'l1.tmx'
 LEVEL2_FILE = 'l2.tmx'
 LEVEL3_FILE = 'l3.tmx'
