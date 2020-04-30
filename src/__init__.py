@@ -11,6 +11,7 @@ from . import game
 from . import state
 from . import s_mainScreen
 from . import s_overworld
+from . import s_pauseScreen
 
 #### 4/30/2020 archived code
 # from . import main

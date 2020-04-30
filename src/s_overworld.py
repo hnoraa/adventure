@@ -1,8 +1,14 @@
+# non local imports
 import pygame
 
+# states
 from state import State
+
+# game settings
 from settings import *
 
+
+# overworld
 class Overworld(State):
     def __init__(self, game):
         super().__init__(game, 'overworld')

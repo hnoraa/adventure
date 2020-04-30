@@ -1,8 +1,14 @@
+# non local imports
 import pygame
 
+# states
 from state import State
+
+# game settings
 from settings import *
 
+
+# pause menu
 class PauseMenu(State):
     def __init__(self, game):
         super().__init__(game, 'pause')
@@ -32,3 +38,4 @@ class PauseMenu(State):
 
     def onExit(self):
         super().onExit()
+        

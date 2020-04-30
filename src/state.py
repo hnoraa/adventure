@@ -1,5 +1,7 @@
+# non local imports
 import pygame
 
+# game settings
 from settings import *
 
 
@@ -58,7 +60,7 @@ class StateMachine():
             # exit current state
             self.currentState.onExit()
 
-        # save the current state as the last state for back tracking
+        # save the current state as the last state for back tracking (i.e. returning from pause menu or back to the overworld from a sub state)
         self.lastState = self.currentState
 
         # get new state from the array of states
