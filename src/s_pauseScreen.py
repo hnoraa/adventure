@@ -3,16 +3,17 @@ import pygame
 from state import State
 from settings import *
 
-class Overworld(State):
+class PauseMenu(State):
     def __init__(self, game):
-        super().__init__(game, 'overworld')
+        super().__init__(game, 'pause')
+        self.lastState = None
 
     def events(self):
         super().events()
 
-        if self.keys[pygame.K_p]:
-            # call pause menu
-            self.game.states.change('pause')
+        if self.keys[pygame.K_e]:
+            # return to last state
+            self.game.states.change(self.game.states.lastState.name)
 
         if self.keys[pygame.K_q]:
             self.game.states.change('mainScreen')
@@ -22,10 +23,11 @@ class Overworld(State):
 
     def render(self):
         super().render()
-        self.surface.fill(BROWN)
+        self.surface.fill(RED)
         self.game.screen.blit(self.surface, (0,0))
 
     def onEnter(self):
+        print(self.game.states.lastState.name)
         super().onEnter()
 
     def onExit(self):

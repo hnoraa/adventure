@@ -11,8 +11,9 @@ class MainScreen(State):
     def events(self):
         super().events()
 
+        # load the main world
         if self.keys[pygame.K_RETURN]:
-            self.onExit()
+            self.game.states.change('overworld')
 
     def update(self):
         super().update()
@@ -28,3 +29,4 @@ class MainScreen(State):
     def onExit(self):
         super().onExit()
         self.game.gameSave = self.gameSave
+        

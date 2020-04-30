@@ -8,6 +8,8 @@ from settings import *
 # states
 from state import StateMachine
 from s_mainScreen import MainScreen
+from s_overworld import Overworld
+from s_pauseScreen import PauseMenu
 
 class Game():
     def __init__(self):
@@ -25,6 +27,8 @@ class Game():
         self.states = StateMachine()
 
         self.states.addState('mainScreen', MainScreen(self))
+        self.states.addState('overworld', Overworld(self))
+        self.states.addState('pause', PauseMenu(self))
 
         self.states.change('mainScreen')
 

@@ -25,10 +25,10 @@ class State():
         pass
 
     def onEnter(self):
-        print("calling onEnter")
+        pass
 
     def onExit(self):
-        print("calling onExit")
+        pass
 
 
 # for controlling the states in the game
@@ -36,6 +36,7 @@ class StateMachine():
     def __init__(self):
         self.states = {}
         self.currentState = None
+        self.lastState = None
     
     def events(self):
         if not self.currentState is None:
@@ -56,6 +57,9 @@ class StateMachine():
         if not self.currentState is None:
             # exit current state
             self.currentState.onExit()
+
+        # save the current state as the last state for back tracking
+        self.lastState = self.currentState
 
         # get new state from the array of states
         self.currentState = self.states[newState]
