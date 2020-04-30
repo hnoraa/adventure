@@ -1,4 +1,4 @@
-# main __init__.py
+# base __init__.py
 
 # application settings
 from . import settings

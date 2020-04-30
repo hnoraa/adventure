@@ -5,6 +5,10 @@ from common.f_pygame import mainGameEvents
 
 from settings import *
 
+# states
+from state import StateMachine
+from s_mainScreen import MainScreen
+
 class Game():
     def __init__(self):
         pygame.init()
@@ -14,20 +18,28 @@ class Game():
         self.clock = pygame.time.Clock()
         self.allSprites = pygame.sprite.Group()
 
-        self.states = None
-        self.currentState = None
-        self.running = False
+        self.running = True
+        self.getStates()        
 
+    def getStates(self):
+        self.states = StateMachine()
+
+        self.states.addState('mainScreen', MainScreen(self))
+
+        self.states.change('mainScreen')
 
     def loop(self):
+        print(self.states.currentState.name)
+
         while self.running:
             self.dt = self.clock.tick(FPS) / CLOCK_TICK
 
             self.running = mainGameEvents(self.running)
+            self.states.events()
 
             self.update()
 
-            self.draw()
+            self.render()
 
         self.quit()
 
@@ -37,7 +49,9 @@ class Game():
         sys.exit()
 
     def update(self):
+        self.states.update()
         self.allSprites.update()
 
-    def draw(self):
+    def render(self):
+        self.states.render()
         pygame.display.flip()
