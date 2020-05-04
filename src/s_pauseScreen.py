@@ -11,7 +11,7 @@ from settings import *
 # pause menu
 class PauseMenu(State):
     def __init__(self, game):
-        super().__init__(game, 'pause')
+        super().__init__(game, 'pauseScreen')
         self.lastState = None
 
     def events(self):

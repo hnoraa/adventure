@@ -8,10 +8,10 @@ from state import State
 from settings import *
 
 
-# overworld
-class Overworld(State):
+# gameScreen
+class GameScreen(State):
     def __init__(self, game):
-        super().__init__(game, 'overworld')
+        super().__init__(game, 'GameScreen')
 
     def events(self):
         super().events()
