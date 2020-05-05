@@ -11,7 +11,7 @@ from settings import *
 # gameScreen
 class GameScreen(State):
     def __init__(self, game):
-        super().__init__(game, 'GameScreen')
+        super().__init__(game, 'gameScreen')
 
     def events(self):
         super().events()

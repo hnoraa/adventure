@@ -19,7 +19,7 @@ class MainScreen(State):
 
         # load the main world
         if self.keys[pygame.K_RETURN]:
-            self.game.states.change('overworld')
+            self.game.states.change('gameScreen')
 
     def update(self):
         super().update()
