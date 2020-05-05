@@ -9,12 +9,9 @@ from common.f_pygame import mainGameEvents
 class Engine():
     def __init__(self):
         self.dimensions = (WIDTH, HEIGHT)
-
         self.screen = pygame.display.set_mode(self.dimensions)
         pygame.display.set_caption(TITLE)
-
         self.clock = pygame.time.Clock()
-
         self.running = True
 
     def run(self):
