@@ -1,7 +1,6 @@
-# non local imports
+# state.py
 import pygame
 
-# game settings
 from settings import *
 
 

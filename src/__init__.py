@@ -9,6 +9,7 @@ from . import game
 
 # rendering
 from . import maps
+from . import sprite
 
 # states
 from . import state

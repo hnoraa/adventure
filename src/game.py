@@ -1,4 +1,4 @@
-# non local imports
+# game.py
 import pygame
 import sys
 

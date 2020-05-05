@@ -1,4 +1,4 @@
-# non local imports
+# s_gameScreen.py
 import pygame
 
 from settings import *

@@ -1,11 +1,8 @@
-# non local imports
+# s_pauseScreen.py
 import pygame
 
-# states
-from state import State
-
-# game settings
 from settings import *
+from state import State
 
 
 # pause menu
