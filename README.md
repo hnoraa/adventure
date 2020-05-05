@@ -26,3 +26,8 @@ An adventure game written in python
 - [ ] inventory item raft allows player to travel over water
 - [ ] tileset for caves
 - [ ] tileset for dungeons
+
+## Run
+```python
+python src/main.py
+```
