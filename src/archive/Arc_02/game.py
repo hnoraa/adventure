@@ -9,6 +9,7 @@ from s_mainScreen import MainScreen
 from s_gameScreen import GameScreen
 from s_pauseScreen import PauseMenu
 from sp_player import Player
+from camera import Camera
 
 
 # the main class of the game, it drives everything
@@ -22,6 +23,7 @@ class Game():
 
         self.allSprites = pygame.sprite.Group()
         self.player = Player(self, 10, 10)
+        self.camera = None
 
         self.running = True
         self.getStates()
@@ -62,9 +64,8 @@ class Game():
         sys.exit()
 
     def update(self):
-        self.states.update()
-
         self.allSprites.update()
+        self.states.update()
 
     def render(self):
         self.states.render()

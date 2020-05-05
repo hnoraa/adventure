@@ -6,6 +6,7 @@ from common.f_pygame import mainGameEvents
 from common.f_pytmx import getObjCenter
 from state import State
 from maps import TiledMap
+from camera import Camera
 
 
 # gameScreen
@@ -33,9 +34,14 @@ class GameScreen(State):
 
     def update(self):
         super().update()
+        self.game.camera.update(self.game.player)
 
     def render(self):
-        self.game.screen.blit(self.mapImg, (0,0))
+        self.surface.blit(self.mapImg, self.game.camera.apply(self.map))
+        
+        for spr in self.game.allSprites:
+            self.surface.blit(spr.image, self.game.camera.apply(spr))
+
         super().render()
 
     def onEnter(self):
@@ -50,3 +56,4 @@ class GameScreen(State):
         self.mapImg = self.map.render()
         self.map.rect = self.mapImg.get_rect()
 
+        self.game.camera = Camera(self.map.width, self.map.height)

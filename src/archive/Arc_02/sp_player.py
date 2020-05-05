@@ -79,3 +79,4 @@ class Player(Sprite):
 
         # set the player rect as a result of any collisions
         self.rect.center = self.hitRect.center
+        

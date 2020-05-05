@@ -10,6 +10,8 @@ from . import game
 # rendering
 from . import maps
 from . import sprite
+from . import sp_player
+from . import camera
 
 # states
 from . import state

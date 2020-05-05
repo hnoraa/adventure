@@ -20,11 +20,10 @@ class State():
         self.keys = pygame.key.get_pressed()
 
     def update(self):
-        self.game.allSprites.update()
+        pass
 
     def render(self):
-        for spr in self.game.allSprites:
-            self.game.screen.blit(spr.image, spr.pos)
+        pass
 
     def onEnter(self):
         pass
@@ -72,4 +71,3 @@ class StateMachine():
     def addState(self, newState, state):
         # add a state to the states dict
         self.states[newState] = state
-        print("added state: %s " % (newState))
