@@ -35,14 +35,11 @@ class GameScreen(State):
         super().update()
 
     def render(self):
-        super().render()
-        
-        # self.surface.fill(BROWN)
         self.game.screen.blit(self.mapImg, (0,0))
+        super().render()
 
     def onEnter(self):
         super().onEnter()
-
         self.loadMap()
 
     def onExit(self):

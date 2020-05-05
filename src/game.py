@@ -8,6 +8,7 @@ from state import StateMachine
 from s_mainScreen import MainScreen
 from s_gameScreen import GameScreen
 from s_pauseScreen import PauseMenu
+from sp_player import Player
 
 
 # the main class of the game, it drives everything
@@ -20,6 +21,7 @@ class Game():
         self.clock = pygame.time.Clock()
 
         self.allSprites = pygame.sprite.Group()
+        self.player = Player(self, 10, 10)
 
         self.running = True
         self.getStates()

@@ -20,10 +20,11 @@ class State():
         self.keys = pygame.key.get_pressed()
 
     def update(self):
-        pass
+        self.game.allSprites.update()
 
     def render(self):
-        pass
+        for spr in self.game.allSprites:
+            self.game.screen.blit(spr.image, spr.pos)
 
     def onEnter(self):
         pass
