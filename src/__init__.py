@@ -7,6 +7,9 @@ from . import settings
 from . import main
 from . import game
 
+# rendering
+from . import maps
+
 # states
 from . import state
 from . import s_mainScreen

@@ -21,7 +21,7 @@ class PauseMenu(State):
             # return to last state
             self.game.states.change(self.game.states.lastState.name)
 
-        if self.keys[pygame.K_q]:
+        if DEBUG and self.keys[pygame.K_q]:
             self.game.states.change('mainScreen')
 
     def update(self):
@@ -29,11 +29,11 @@ class PauseMenu(State):
 
     def render(self):
         super().render()
+        
         self.surface.fill(RED)
         self.game.screen.blit(self.surface, (0,0))
 
     def onEnter(self):
-        print(self.game.states.lastState.name)
         super().onEnter()
 
     def onExit(self):

@@ -2,13 +2,8 @@
 import pygame
 import sys
 
-# common util
-from common.f_pygame import mainGameEvents
-
-# game settings
 from settings import *
-
-# states
+from common.f_pygame import mainGameEvents
 from state import StateMachine
 from s_mainScreen import MainScreen
 from s_gameScreen import GameScreen
@@ -23,10 +18,11 @@ class Game():
         pygame.display.set_caption(TITLE)
 
         self.clock = pygame.time.Clock()
+
         self.allSprites = pygame.sprite.Group()
 
         self.running = True
-        self.getStates()        
+        self.getStates()
 
     def getStates(self):
         # add states to the game

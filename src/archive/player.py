@@ -28,7 +28,6 @@ class Player(Sprite):
         super().__init__(game, PLAYER_HIT_RECT, self.image, x, y)
 
         self.aquatic = True
-        self.currentLocation = self.game.currentLocation
 
     def setNewBounds(self, x, y):
         super().setNewBounds(x, y)
@@ -84,28 +83,28 @@ class Player(Sprite):
         self.hitRect.centerx = self.pos.x
         self.hitRect.centery = self.pos.y
 
-        ### DO COLLISIONS ###
-        ### These may not happen every game loop iteration but will be caught 
-        # if not aquatic, dont allow passage on water
-        if not self.aquatic: 
-            collide(self, self.game.water, 'x')
-            collide(self, self.game.water, 'y')
+        # ### DO COLLISIONS ###
+        # ### These may not happen every game loop iteration but will be caught 
+        # # if not aquatic, dont allow passage on water
+        # if not self.aquatic: 
+        #     collide(self, self.game.water, 'x')
+        #     collide(self, self.game.water, 'y')
 
-        # entrances to levels/tunnels
-        enter(self, self.game.levelEntrances)
-        enter(self, self.game.tunnelEntrances)
+        # # entrances to levels/tunnels
+        # enter(self, self.game.levelEntrances)
+        # enter(self, self.game.tunnelEntrances)
 
-        # exits to the overworld
-        exitToOverworld(self, self.game.exits)
+        # # exits to the overworld
+        # exitToOverworld(self, self.game.exits)
 
-        # world,level,tunnel, houses bounds collisions
-        collide(self, self.game.stones, 'x')
-        collide(self, self.game.walls, 'x')
-        collide(self, self.game.houses, 'x')
+        # # world,level,tunnel, houses bounds collisions
+        # collide(self, self.game.stones, 'x')
+        # collide(self, self.game.walls, 'x')
+        # collide(self, self.game.houses, 'x')
 
-        collide(self, self.game.stones, 'y')
-        collide(self, self.game.walls, 'y')
-        collide(self, self.game.houses, 'y')
+        # collide(self, self.game.stones, 'y')
+        # collide(self, self.game.walls, 'y')
+        # collide(self, self.game.houses, 'y')
 
         # set the player rect as a result of any collisions
         self.rect.center = self.hitRect.center

@@ -26,6 +26,7 @@ class MainScreen(State):
 
     def render(self):
         super().render()
+        
         self.surface.fill(MAGENTA)
         self.game.screen.blit(self.surface, (0,0))
 
