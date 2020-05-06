@@ -25,7 +25,7 @@ TITLE = "Tile Adventure"
 
 # subdirectories
 IMG_DIR = '../images'
-MAP_DIR = '../maps'
+MAP_DIR = '../res/maps'
 
 # player settings
 PLAYER_SPEED = 300

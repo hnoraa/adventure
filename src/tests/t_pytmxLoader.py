@@ -55,7 +55,7 @@ screen = pygame.display.set_mode((640,480))
 clock = pygame.time.Clock()
 
 # load tmx
-file = "../maps/overworld.tmx"
+file = "../maps/old/overworld.tmx"
 tmxFile = pytmx.load_pygame(file, pixelalpha=True)
 
 # create surface
