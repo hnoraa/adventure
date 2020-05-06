@@ -1,7 +1,7 @@
 # f_directories.py
 # functions to get directory paths
 from os import path
-from settings import *
+from . import settings
 
 def rootDir():
     return path.dirname(__file__)

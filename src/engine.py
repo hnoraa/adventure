@@ -3,7 +3,7 @@
 import pygame
 import sys
 
-from settings import *
+from common.settings import *
 from common.f_pygame import mainGameEvents
 
 
