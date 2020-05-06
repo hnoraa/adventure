@@ -2,18 +2,21 @@
 # top level game engine to hold states and base game loop logic
 import pygame
 import sys
+from src.common.settings import *
+from src.common.f_pygame import mainGameEvents
 
-from common.settings import *
-from common.f_pygame import mainGameEvents
 
-
-class Engine():
+class Engine:
+    """
+    The main game engine
+    """
     def __init__(self):
         self.dimensions = (WIDTH, HEIGHT)
         self.screen = pygame.display.set_mode(self.dimensions)
         pygame.display.set_caption(TITLE)
         self.clock = pygame.time.Clock()
         self.running = True
+        self.dt = 0
 
     def run(self):
         while self.running:
@@ -28,7 +31,7 @@ class Engine():
 
             # rendering
             self.render()
-        
+
         # terminate
         self.quit()
 
@@ -46,7 +49,7 @@ class Engine():
         # flip the display
         pygame.display.flip()
 
-    def quit(self):
+    @staticmethod
+    def quit():
         pygame.quit()
         sys.exit()
-

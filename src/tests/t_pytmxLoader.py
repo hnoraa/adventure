@@ -5,6 +5,7 @@ import sys
 
 vec = pygame.math.Vector2
 
+
 class Camera:
     def __init__(self, width, height):
         self.camera = pygame.Rect(0, 0, width, height)
@@ -22,11 +23,11 @@ class Camera:
         y = -target.rect.centery + int(480 / 2)
 
         # limit scrolling to map size
-        x = min(0, x)   # left
-        y = min(0, y)   # top
-        x = max(-(self.width - 640), x)   # right
-        y = max(-(self.height - 480), y) # bottom
-        
+        x = min(0, x)  # left
+        y = min(0, y)  # top
+        x = max(-(self.width - 640), x)  # right
+        y = max(-(self.height - 480), y)  # bottom
+
         self.camera = pygame.Rect(x, y, self.width, self.height)
 
 
@@ -37,7 +38,8 @@ class TiledMap:
         self.height = self.tmxdata.height * self.tmxdata.tileheight
 
     def render(self):
-        surface = pygame.Surface((self.tmxdata.width * self.tmxdata.tilewidth, self.tmxdata.height * self.tmxdata.tileheight))
+        surface = pygame.Surface(
+            (self.tmxdata.width * self.tmxdata.tilewidth, self.tmxdata.height * self.tmxdata.tileheight))
         ti = self.tmxdata.get_tile_image_by_gid
         for layer in self.tmxdata.visible_layers:
             if isinstance(layer, pytmx.TiledTileLayer):
@@ -51,7 +53,7 @@ class TiledMap:
 
 # init pygame
 pygame.init()
-screen = pygame.display.set_mode((640,480))
+screen = pygame.display.set_mode((640, 480))
 clock = pygame.time.Clock()
 
 # load tmx
@@ -76,13 +78,13 @@ while running:
         if e.type == pygame.KEYDOWN:
             if e.key == pygame.K_ESCAPE:
                 running = False
-    
-    #update
-    #camera.update()
+
+    # update
+    # camera.update()
 
     # render
     # screen.blit(mapSurf, camera.apply(mapE))
-    screen.blit(mapImg, (0,0))
+    screen.blit(mapImg, (0, 0))
     pygame.display.flip()
 
 # quit

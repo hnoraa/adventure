@@ -2,7 +2,6 @@
 # game settings
 import pygame
 
-
 # colors and transparency key
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -24,8 +23,9 @@ CLOCK_TICK = 1000
 TITLE = "Tile Adventure"
 
 # subdirectories
-IMG_DIR = '../images'
+IMG_DIR = '../res/images'
 MAP_DIR = '../res/maps'
+FONT_DIR = '../res/fonts'
 
 # player settings
 PLAYER_SPEED = 300

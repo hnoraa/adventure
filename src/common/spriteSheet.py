@@ -16,8 +16,8 @@ class SpriteSheet:
         except pygame.error as e:
             print(f"Unable to load sprite sheet image: {fileName}")
             raise SystemExit(e)
-    
-    def image_at(self, rectangle, colorKey = None):
+
+    def image_at(self, rectangle, colorKey=None):
         # load a specific image from a specific rectangle
         # loads from x, y, x+offset, y+offset
         rect = pygame.Rect(rectangle)
@@ -32,13 +32,13 @@ class SpriteSheet:
 
         return image
 
-    def images_at(self, rectangles, colorKey = None):
+    def images_at(self, rectangles, colorKey=None):
         # load a bunch of images, return a list
         return [self.image_at(rect, colorKey) for rect in rectangles]
 
-    def load_strip(self, rectangle, imageCount, colorKey = None):
+    def load_strip(self, rectangle, imageCount, colorKey=None):
         # load a whole strip of images and return them as a list
-        tuples = [(rectangle[0]+rectangle[2]*x, rectangle[1], rectangle[2], rectangle(3))
-            for x in range(imageCount)]
-            
+        tuples = [(rectangle[0] + rectangle[2] * x, rectangle[1], rectangle[2], rectangle(3))
+                  for x in range(imageCount)]
+
         return self.images_at(tuples, colorKey)
