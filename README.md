@@ -27,6 +27,7 @@ An adventure game written in python
 - [ ] collision detection for bounds
 - [ ] collision detection for bad guys
 - [ ] tile maps
+- [ ] folder structure
 
 ## Run
 ```python

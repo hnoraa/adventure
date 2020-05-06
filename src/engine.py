@@ -6,6 +6,7 @@ import sys
 from settings import *
 from common.f_pygame import mainGameEvents
 
+
 class Engine():
     def __init__(self):
         self.dimensions = (WIDTH, HEIGHT)
