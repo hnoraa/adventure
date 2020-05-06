@@ -14,18 +14,19 @@ An adventure game written in python
 * paint.net 4.2.9
 
 ## Todo
-- [x] scale sprite sheet image to 32 x 32 instead of 16 x 16
-- [x] change player width/height to 32
-- [x] fix color key issues on player sprite sheet (edges blurred when resized)
-- [ ] make main overworld (largest map)
-- [ ] come up with dungeons
-- [ ] scene management (start screen, game screen, pause screen, inventory)
-- [ ] dungeon fog (ex: dark caves)
-- [ ] add inventory items (ex: torch, raft)
-- [ ] inventory item torch lights up caves, removes fog
-- [ ] inventory item raft allows player to travel over water
-- [ ] tileset for caves
-- [ ] tileset for dungeons
+- [ ] state manager for screens
+- [ ] menu screen
+- [ ] pause screen
+- [ ] game screen
+- [ ] state manager for overworld, level and town screens
+- [ ] inventory
+- [ ] bad guy sprites
+- [ ] npcs
+- [ ] player sprite
+- [ ] camera to follow sprite
+- [ ] collision detection for bounds
+- [ ] collision detection for bad guys
+- [ ] tile maps
 
 ## Run
 ```python
