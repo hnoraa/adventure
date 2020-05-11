@@ -11,9 +11,11 @@ class ScreenState:
     def __init__(self, game, name):
         self.name = name
         self.game = game
+        self.surface = pygame.Surface(game.dimensions)
+        self.surfaceRect = self.surface.get_rect()
 
     def events(self):
-        pass
+        self.keys = pygame.key.get_pressed()
 
     def update(self):
         pass

@@ -1,4 +1,4 @@
-# game.py
+# s_game.py
 import pygame
 import sys
 

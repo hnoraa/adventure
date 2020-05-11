@@ -1,4 +1,4 @@
-# settings.py
+# s_game.py
 # game settings
 import pygame
 

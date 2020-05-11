@@ -15,9 +15,7 @@ def renderText(msg, font, color):
 def drawText(surface, textObj, x, y):
     surface.blit(textObj, (x, y))
 """
-import pygame
-import os
-from .settings import *
+from src.settings.s_game import *
 from .f_directories import fontsDir
 
 
