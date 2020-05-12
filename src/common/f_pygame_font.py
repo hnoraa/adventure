@@ -16,7 +16,7 @@ def drawText(surface, textObj, x, y):
     surface.blit(textObj, (x, y))
 """
 import pygame
-from src.settings.st_game import *
+
 from .f_directories import fontsDir
 
 

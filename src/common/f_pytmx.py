@@ -1,7 +1,7 @@
 # f_pytmx.py
 # functions to load and render tmx files
-import pytmx
 import pygame
+import pytmx
 
 from . import f_pygame
 

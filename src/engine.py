@@ -1,8 +1,7 @@
 # engine.py
 # top level game engine to hold states and base game loop logic
 import sys
-from src.settings import st_game
-from src.common import *
+
 from src.screens import *
 
 
@@ -10,6 +9,7 @@ class Engine:
     """
     The main game engine
     """
+
     def __init__(self):
         pygame.init()
         pygame.font.init()

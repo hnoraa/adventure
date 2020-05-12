@@ -1,5 +1,5 @@
-from .screenState import ScreenState
 from src.settings import *
+from .screenState import ScreenState
 
 
 class OverworldScreen(ScreenState):

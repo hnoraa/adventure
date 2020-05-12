@@ -1,7 +1,8 @@
 # load tmx file and show it
-import pytmx
-import pygame
 import sys
+
+import pygame
+import pytmx
 
 vec = pygame.math.Vector2
 

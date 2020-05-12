@@ -1,6 +1,5 @@
-from .screenState import ScreenState
-from src.settings import *
 from src.common import *
+from .screenState import ScreenState
 
 
 class PauseScreen(ScreenState):
