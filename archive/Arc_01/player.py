@@ -1,4 +1,4 @@
-# s_player.py
+# st_player.py
 # main player sprite
 import pygame
 from settings import *

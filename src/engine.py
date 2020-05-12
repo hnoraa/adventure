@@ -1,7 +1,7 @@
 # engine.py
 # top level game engine to hold states and base game loop logic
 import sys
-from src.settings import s_game
+from src.settings import st_game
 from src.common import *
 from src.screens import *
 
@@ -11,14 +11,22 @@ class Engine:
     The main game engine
     """
     def __init__(self):
+        pygame.init()
+        pygame.font.init()
+
         self.dimensions = (WIDTH, HEIGHT)
         self.screen = pygame.display.set_mode(self.dimensions)
+
         pygame.display.set_caption(TITLE)
+
         self.clock = pygame.time.Clock()
         self.running = True
         self.dt = 0
+
         self.states = screenState.ScreenStateMachine()
-        self.states.addState('mainScreen', s_main.MainScreen(self))
+        self.states.addState('mainScreen', sc_main.MainScreen(self))
+        self.states.addState('overworldScreen', sc_overworld.OverworldScreen(self))
+        self.states.addState('pauseScreen', sc_pause.PauseScreen(self))
         self.states.changeState('mainScreen')
 
     def run(self):

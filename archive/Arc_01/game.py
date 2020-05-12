@@ -1,4 +1,4 @@
-# s_game.py
+# st_game.py
 # the main game components
 import pygame
 import os
