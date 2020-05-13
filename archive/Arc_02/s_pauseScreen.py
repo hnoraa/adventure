@@ -35,4 +35,3 @@ class PauseMenu(State):
 
     def onExit(self):
         super().onExit()
-        

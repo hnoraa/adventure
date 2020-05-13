@@ -62,5 +62,7 @@ class ScreenStateMachine:
         # get new state from state dict
         self.current = self.states[newStateName]
 
+        self.current.onEnter()
+
     def addState(self, newStateName, stateObj):
         self.states[newStateName] = stateObj

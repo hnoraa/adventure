@@ -19,7 +19,7 @@ class PauseScreen(ScreenState):
 
         if self.keys[pygame.K_SPACE]:
             # change state to main screen
-            self.game.states.changeState('overworldScreen')
+            self.game.states.changeState(self.game.states.last.name)
 
     def update(self):
         super().update()
