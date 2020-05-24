@@ -2,7 +2,7 @@
 # functions to get directory paths
 from os import path
 
-from src.settings import *
+from settings import *
 
 
 def rootDir():

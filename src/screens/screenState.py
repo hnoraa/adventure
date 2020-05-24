@@ -23,12 +23,14 @@ class ScreenState:
     def render(self):
         pass
 
-    def onEnter(self):
+    def onEnter(self, reloadScreen=False):
         pass
 
     def onExit(self):
         pass
 
+    def onQuit(self):
+        pass
 
 class ScreenStateMachine:
     """
@@ -52,7 +54,7 @@ class ScreenStateMachine:
         if not self.current is None:
             self.current.render()
 
-    def changeState(self, newStateName):
+    def changeState(self, newStateName, reloadScreen=False):
         if not self.current is None:
             self.current.onExit()
 
@@ -62,7 +64,11 @@ class ScreenStateMachine:
         # get new state from state dict
         self.current = self.states[newStateName]
 
-        self.current.onEnter()
+        self.current.onEnter(reloadScreen)
 
     def addState(self, newStateName, stateObj):
         self.states[newStateName] = stateObj
+
+    def quit(self):
+        for e in self.states:
+            e.onQuit()

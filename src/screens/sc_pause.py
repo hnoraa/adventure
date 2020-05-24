@@ -1,4 +1,4 @@
-from src.common import *
+from common import *
 from .screenState import ScreenState
 
 
@@ -34,8 +34,8 @@ class PauseScreen(ScreenState):
 
         self.game.screen.blit(self.surface, (0, 0))
 
-    def onEnter(self):
-        super().onEnter()
+    def onEnter(self, reloadScreen=False):
+        super().onEnter(reloadScreen)
 
     def onExit(self):
         super().onExit()

@@ -1,10 +1,17 @@
-from src.settings import *
+from settings import *
+from common import *
 from .screenState import ScreenState
 
 
 class OverworldScreen(ScreenState):
     def __init__(self, game):
         super().__init__(game, 'overworldScreen')
+
+    def loadMap(self):
+        # create surface
+        self.mapE = TiledMap(mapsDir(OVERWORLD))
+        self.mapImg = self.mapE.render()
+        self.mapE.rect = self.mapImg.get_rect()
 
     def events(self):
         pass
@@ -22,12 +29,13 @@ class OverworldScreen(ScreenState):
     def render(self):
         super().render()
 
-        self.surface.fill(BEIGE)
+        self.game.screen.blit(self.mapImg, (0, 0))
 
-        self.game.screen.blit(self.surface, (0, 0))
+    def onEnter(self, reloadScreen=False):
+        super().onEnter(reloadScreen)
 
-    def onEnter(self):
-        super().onEnter()
+        if reloadScreen:
+            self.loadMap()
 
     def onExit(self):
         super().onExit()

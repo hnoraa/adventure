@@ -60,19 +60,19 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:
             self.direction = 'l'
-            self.vel.x = -120
+            self.vel.x = -60
 
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
             self.direction = 'r'
-            self.vel.x = 120
+            self.vel.x = 60
 
         if keys[pygame.K_UP] or keys[pygame.K_w]:
             self.direction = 'u'
-            self.vel.y = -120
+            self.vel.y = -60
 
         if keys[pygame.K_DOWN] or keys[pygame.K_s]:
             self.direction = 'd'
-            self.vel.y = 120
+            self.vel.y = 60
 
         if self.vel.x != 0 and self.vel.y != 0:
             self.vel *= 0.7071
@@ -113,49 +113,53 @@ class TiledMap:
 
         return surface
 
+class T_pytmxLoader():
+    def __init__(self):
+        pass
 
-# init pygame
-pygame.init()
-screen = pygame.display.set_mode((640, 480))
-clock = pygame.time.Clock()
+    def run(self):
+        # init pygame
+        pygame.init()
+        screen = pygame.display.set_mode((640, 480))
+        clock = pygame.time.Clock()
 
-# load tmx
-file = "../res/maps/overworld.tmx"
-tmxFile = pytmx.load_pygame(file, pixelalpha=True)
+        # load tmx
+        file = "../res/maps/overworld.tmx"
+        tmxFile = pytmx.load_pygame(file, pixelalpha=True)
 
-# create surface
-mapE = TiledMap(file)
-mapImg = mapE.render()
-mapE.rect = mapImg.get_rect()
+        # create surface
+        mapE = TiledMap(file)
+        mapImg = mapE.render()
+        mapE.rect = mapImg.get_rect()
 
-# create a player
-allSprites = pygame.sprite.Group()
-player = Player(10, 10, allSprites)
+        # create a player
+        allSprites = pygame.sprite.Group()
+        player = Player(10, 10, allSprites)
 
-camera = Camera(mapE.width, mapE.height)
+        camera = Camera(mapE.width, mapE.height)
 
-# main loop
-running = True
-while running:
-    # events
-    for e in pygame.event.get():
-        if e.type == pygame.QUIT:
-            running = False
+        # main loop
+        running = True
+        while running:
+            # events
+            for e in pygame.event.get():
+                if e.type == pygame.QUIT:
+                    running = False
 
-        if e.type == pygame.KEYDOWN:
-            if e.key == pygame.K_ESCAPE:
-                running = False
-    player.getKeys()
+                if e.type == pygame.KEYDOWN:
+                    if e.key == pygame.K_ESCAPE:
+                        running = False
+            player.getKeys()
 
-    # update
-    allSprites.update()
-    camera.update(player)
+            # update
+            allSprites.update()
+            camera.update(player)
 
-    # render
-    screen.blit(mapImg, camera.apply(mapE))
-    # screen.blit(mapImg, (0, 0))
-    pygame.display.flip()
+            # render
+            screen.blit(mapImg, camera.apply(mapE))
+            # screen.blit(mapImg, (0, 0))
+            pygame.display.flip()
 
-# quit
-pygame.quit()
-sys.exit()
+            # quit
+            pygame.quit()
+            sys.exit()

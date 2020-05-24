@@ -1,4 +1,4 @@
-from src.common import *
+from common import *
 from .screenState import ScreenState
 
 
@@ -26,7 +26,7 @@ class MainScreen(ScreenState):
 
         if self.keys[pygame.K_RETURN]:
             # change state to main screen
-            self.game.states.changeState('overworldScreen')
+            self.game.states.changeState('overworldScreen', True)
 
     def update(self):
         super().update()
@@ -44,8 +44,8 @@ class MainScreen(ScreenState):
 
         self.game.screen.blit(self.surface, (0, 0))
 
-    def onEnter(self):
-        super().onEnter()
+    def onEnter(self, reloadScreen=False):
+        super().onEnter(reloadScreen)
 
     def onExit(self):
         super().onExit()

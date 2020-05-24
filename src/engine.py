@@ -1,8 +1,9 @@
 # engine.py
 # top level game engine to hold states and base game loop logic
 import sys
-
-from src.screens import *
+import pygame
+from screens import *
+from sprites import Player
 
 
 class Engine:
@@ -22,6 +23,9 @@ class Engine:
         self.clock = pygame.time.Clock()
         self.running = True
         self.dt = 0
+
+        self.allSprites = pygame.sprite.Group()
+        self.player = Player(self, 10, 10)
 
         self.states = screenState.ScreenStateMachine()
         self.states.addState('mainScreen', sc_main.MainScreen(self))
@@ -62,7 +66,13 @@ class Engine:
         # flip the display
         pygame.display.flip()
 
-    @staticmethod
-    def quit():
+    def quit(self):
         pygame.quit()
+
+        # manage game resources
+        self.player = None
+        self.allSprites = None
+        self.states.quit()
+        self.states = None
+
         sys.exit()
