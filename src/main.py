@@ -1,7 +1,9 @@
-# main.py
-# this just runs the engine, nothing else
+"""
+main.py
+
+Entry point into application
+"""
 from engine import Engine
 
-if __name__ == '__main__':
-    e = Engine()
-    e.run()
+e = Engine()
+e.run()

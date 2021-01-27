@@ -1,78 +1,59 @@
-# engine.py
-# top level game engine to hold states and base game loop logic
+"""
+engine.py
+
+Main game loop, basically the root of it all!
+"""
 import sys
 import pygame
-from screens import *
-from sprites import Player
 
 
 class Engine:
-    """
-    The main game engine
-    """
-
     def __init__(self):
         pygame.init()
         pygame.font.init()
 
-        self.dimensions = (WIDTH, HEIGHT)
-        self.screen = pygame.display.set_mode(self.dimensions)
+        self.screen_size = (100, 100)
+        self.screen = pygame.display.set_mode(self.screen_size)
 
-        pygame.display.set_caption(TITLE)
+        pygame.display.set_caption('Adventure')
 
         self.clock = pygame.time.Clock()
         self.running = True
-        self.dt = 0
-
-        self.allSprites = pygame.sprite.Group()
-        self.player = Player(self, 10, 10)
-
-        self.states = screenState.ScreenStateMachine()
-        self.states.addState('mainScreen', sc_main.MainScreen(self))
-        self.states.addState('overworldScreen', sc_overworld.OverworldScreen(self))
-        self.states.addState('pauseScreen', sc_pause.PauseScreen(self))
-        self.states.changeState('mainScreen')
+        self.delta_time = 0
+        self.fps = 50
+        self.clock_tick = 1000
 
     def run(self):
         while self.running:
-            # update the delta time variable
-            self.dt = self.clock.tick(FPS) / CLOCK_TICK
+            # update delta time var
+            self.delta_time = self.clock.tick(50)
 
-            # events
-            self.events()
+            self.process_events()
 
-            # updates
-            self.update()
+            self.process_updates()
 
-            # rendering
             self.render()
 
-        # terminate
         self.quit()
 
-    def events(self):
-        # process state events first
-        self.running = mainGameEvents(self.running)
-        self.states.events()
+    def process_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.running = False
 
-    def update(self):
-        # do events of the current state
-        self.states.update()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.running = False
 
-    def render(self):
-        # do events of current state
-        self.states.render()
+    def process_updates(self):
+        pass
 
-        # flip the display
+    @staticmethod
+    def render():
         pygame.display.flip()
 
-    def quit(self):
+    @staticmethod
+    def quit():
         pygame.quit()
-
-        # manage game resources
-        self.player = None
-        self.allSprites = None
-        self.states.quit()
-        self.states = None
 
         sys.exit()
